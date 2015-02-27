@@ -1,23 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Abbiomat</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#" style="padding:0px 10px 0px 10px">
-          <%= image_tag "cbs_logo.jpg", :style => "height: 50px" %>
-        </a>
-      </div>
+  <head>
+    <title>Abbiomat</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="container">
+      <%= render 'layouts/header' %>
+      <%= yield %>
+      <%= render 'layouts/footer' %>
     </div>
-  </nav>
-
-<%= yield %>
-
-</body>
+  </body>
 </html>
