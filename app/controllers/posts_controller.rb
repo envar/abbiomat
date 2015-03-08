@@ -2,8 +2,6 @@ class PostsController < Admin::AdminController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
   skip_before_action :ensure_admin!, only: [:index, :show]
-  validates :title, :body, :author, presence: true
-  validates :title, uniqueness: true
 
   # GET /posts
   # GET /posts.json

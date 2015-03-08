@@ -2,7 +2,6 @@ class ImagesController < Admin::AdminController
   before_action :set_image, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
   skip_before_action :ensure_admin!, only: [:index, :show]
-  validates_attachment :image, :content_type => { :content_type => ["image/jpeg", "image/gif", "image/png"] }
 
   # GET /images
   # GET /images.json
