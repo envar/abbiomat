@@ -2,6 +2,8 @@ class PostsController < Admin::AdminController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
   skip_before_action :ensure_admin!, only: [:index, :show]
+  validates :title, :body, :author, presence: true
+  validates :title, uniqueness: true
 
   # GET /posts
   # GET /posts.json
@@ -17,6 +19,7 @@ class PostsController < Admin::AdminController
   # GET /posts/new
   def new
     @post = Post.new
+    1.times { @post.images.build }
   end
 
   # GET /posts/1/edit
@@ -71,6 +74,10 @@ class PostsController < Admin::AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :body, :author)
+      params.require(:post).permit(:title, :body, :author, images_attributes: [:image])
+    end
+
+    def create_image(image)
+      @image
     end
 end

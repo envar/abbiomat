@@ -1,4 +1,6 @@
 *.swp
+.env
+doc
 
 *.rbc
 capybara-*.html
