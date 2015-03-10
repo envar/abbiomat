@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
+
+  root 'static_pages#home'
+  # match '/' => 'static_pages#show', :via => [:get], :defaults => { :id => '1' }, as: 'root'
+  match '/about' => 'static_pages#show', :via => [:get], :defaults => { :id => '2' }
+  match '/resources' => 'static_pages#show', :via => [:get], :defaults => { :id => '3' }
+  resources :static_pages
+
   resources :posts
 
   devise_for :users
 
-  get 'static_pages/home'
-
-  get 'static_pages/about'
-
-  root 'static_pages#home'
+  #root 'static_pages#home'
 
   namespace :admin do
     resources :users
