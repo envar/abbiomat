@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # match '/' => 'static_pages#show', :via => [:get], :defaults => { :id => '1' }, as: 'root'
   match '/about' => 'static_pages#show', :via => [:get], :defaults => { :id => '2' }
   match '/resources' => 'static_pages#show', :via => [:get], :defaults => { :id => '3' }
+  match '/jobs' => 'static_pages#show', :via => [:get], :defaults => { :id => '4' }
   resources :static_pages
 
   resources :posts

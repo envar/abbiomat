@@ -14,7 +14,8 @@
       <ul class="nav navbar-nav navbar-right">
         <li class="<%= 'active' if current_page?('/') %>"><%= link_to "Home", root_path %></li>
         <li class="<%= 'active' if current_page?('/about') %>"><%= link_to "About", about_path %></li>
-        <li class="<%= 'active' if current_page?(posts_path) %>"><%= link_to "Blog", posts_path %></li>
+        <li class="<%= 'active' if current_page?(posts_path) %>"><%= link_to "News", posts_path %></li>
+        <li class="<%= 'active' if current_page?(jobs_path) %>"><%= link_to "Jobs", jobs_path %></li>
         <li class="<%= 'active' if current_page?('/resources') %>"><%= link_to "Resources", resources_path %></li>
         <% if user_signed_in? %>
           <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= current_user.email %><span class="caret"></span></a>
