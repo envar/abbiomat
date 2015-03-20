@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'user_mailer/send_new_user_message'
+
   root 'static_pages#home'
   # match '/' => 'static_pages#show', :via => [:get], :defaults => { :id => '1' }, as: 'root'
   match '/about' => 'static_pages#show', :via => [:get], :defaults => { :id => '2' }
@@ -9,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :posts
 
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "my_registrations" }
 
   #root 'static_pages#home'
 
