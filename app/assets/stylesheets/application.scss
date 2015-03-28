@@ -12,16 +12,54 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
+ *= require custom_bootstrap/custom_bootstrap
  */
-
-@import "bootstrap-sprockets";
-@import "bootstrap";
-
-body {
-    margin-top: 60px;
-}
 
 #remember_me {
     margin-left: 10px;
 }
 
+.content {
+    margin-top: 80px;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    padding-top: 20px;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 100px;
+    background-color: #93bf9e;
+    h3 {
+        float: left;
+        margin: 0px;
+        padding-top: 15px;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    .fa {
+        color: #333333;
+    }
+
+    li {
+        display: inline;
+        padding: 25px 0px 25px 20px;
+    }
+}

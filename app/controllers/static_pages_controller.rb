@@ -1,7 +1,7 @@
 class StaticPagesController < Admin::AdminController
   before_action :set_static_page, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authenticate_user!, only: :show
-  skip_before_action :ensure_admin!, only: :show
+  skip_before_action :authenticate_user!, only: [:home, :show ]
+  skip_before_action :ensure_admin!, only: [:home, :show]
 
   def home
   end

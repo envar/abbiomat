@@ -53,6 +53,16 @@ class Admin::UsersController < Admin::AdminController
     end
   end
 
+  def update_bulk
+    params['user'].keys.each do |id|
+      @user = User.find(id.to_i)
+      @user.update_attributes(params['user'][id].permit(:approved, :admin))
+    end
+    respond_to do |format|
+      format.html { redirect_to admin_users_url, notice: 'Users were successfully updated' }
+    end
+  end
+
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy

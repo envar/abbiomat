@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
+  root 'static_pages#home'
+
   get 'user_mailer/send_new_user_message'
 
-  root 'static_pages#home'
   # match '/' => 'static_pages#show', :via => [:get], :defaults => { :id => '1' }, as: 'root'
   match '/about' => 'static_pages#show', :via => [:get], :defaults => { :id => '2' }
   match '/resources' => 'static_pages#show', :via => [:get], :defaults => { :id => '3' }
@@ -16,7 +17,11 @@ Rails.application.routes.draw do
   #root 'static_pages#home'
 
   namespace :admin do
-    resources :users
+    resources :users do
+      collection do
+        put :update_bulk
+      end
+    end
   end
 
   resources :images

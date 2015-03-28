@@ -1,0 +1,36 @@
+<% form_for @user, :html => { multipart: true} do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :approved %><br>
+    <%= f.text_field :approved, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :body %><br>
+    <%= f.text_field :body, class: "form-control" %>
+  </div>
+
+  <tr>
+    <th><%= user.id %></th>
+    <td><%= user.first_name %></td>
+    <td><%= user.last_name %></td>
+    <td><%= user.email %></td>
+    <td><%= check_box_tag 'approved', 'approved', user.approved, disabled: "disabled" %></td>
+    <td><%= check_box_tag 'admin', 'admin', user.admin, disabled: "disabled" %></td>
+    <td>
+      <%= link_to 'Edit', edit_admin_user_path(user), class: "btn btn-primary" %>
+      <%= link_to 'Destroy', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+    </td>
+  </tr>
+<% end %>
+

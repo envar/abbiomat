@@ -1,5 +1,5 @@
 <!-- Begin Form -->
-<div class="container">
+<div class="container content">
   <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
     <div class="panel panel-info" >
       <div class="panel-heading">
@@ -16,12 +16,12 @@
         <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => { :id => "loginform", :class => "form-horizontal", :role => "form" }) do |f| %>
 
           <div style="margin-bottom: 25px" class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <span class="input-group-addon"><i class="fa fa-user"></i></span>
             <%= f.email_field:email, autofocus: true, class: "form-control" %>
           </div>
 
           <div style="margin-bottom: 25px" class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
             <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
           </div>
 

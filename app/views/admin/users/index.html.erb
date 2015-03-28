@@ -1,29 +1,35 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Email</th>
-      <th>Approved</th>
-      <th>Admin</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
+<%= form_tag update_bulk_admin_users_path, :method => :put do %>
+  <table class="table">
+    <thead>
       <tr>
-        <th><%= user.id %></th>
-        <td><%= user.first_name %></td>
-        <td><%= user.last_name %></td>
-        <td><%= user.email %></td>
-        <td><%= check_box_tag 'approved', 'approved', user.approved, disabled: "disabled" %></td>
-        <td><%= check_box_tag 'admin', 'admin', user.admin %></td>
-        <td>
-          <%= link_to 'Edit', edit_admin_user_path(user), class: "btn btn-primary" %>
-          <%= link_to 'Destroy', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
-        </td>
+        <th>#</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Approved</th>
+        <th>Admin</th>
+        <th>Actions</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <%= fields_for "user[]", user do |user_fields| %>
+          <tr>
+            <td><%= user.id %></th>
+            <td><%= user.first_name %></td>
+            <td><%= user.last_name %></td>
+            <td><%= user.email %></td>
+            <td><%= user_fields.check_box(:approved) %></td>
+            <td><%= user_fields.check_box(:admin) %></td>
+            <td>
+              <%= link_to 'Edit', edit_admin_user_path(user), class: "btn btn-primary" %>
+              <%= link_to 'Destroy', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+  <%= submit_tag "Save Changes" %>
+<% end %>
+
