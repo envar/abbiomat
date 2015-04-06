@@ -1,10 +1,10 @@
-<%= form_for @post, :html => { multipart: true} do |f| %>
-  <% if @post.errors.any? %>
+<%= form_for @job, :html => { multipart: true} do |f| %>
+  <% if @job.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
 
       <ul>
-        <% @post.errors.full_messages.each do |message| %>
+        <% @job.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
@@ -32,5 +32,5 @@
   <div class="form-group">
     <button class="add_field_button">Add More Fields</button>
   </div>
-  <%= f.submit "Create Post", class: "btn btn-default" %>
+  <%= f.submit "Create Job", class: "btn btn-default" %>
 <% end %>

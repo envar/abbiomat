@@ -1,32 +1,34 @@
-<p id="notice"><%= notice %></p>
+<div class="container content">
+  <p id="notice"><%= notice %></p>
 
-<h1>Listing Static Pages</h1>
+  <h1>Listing Static Pages</h1>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Author</th>
-      <th>Actions</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @static_pages.each do |static_page| %>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= static_page.title %></td>
-        <td><%= static_page.author %></td>
-        <td>
-          <%= link_to 'Show', static_page, :class => "btn btn-default btn-sm" %>
-          <%= link_to 'Edit', edit_static_page_path(static_page), :class => "btn btn-default btn-sm"  %>
-          <%= link_to 'Destroy', static_page, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-default btn-danger btn-sm"  %>
-        </td>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Actions</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @static_pages.each do |static_page| %>
+        <tr>
+          <td><%= static_page.title %></td>
+          <td><%= static_page.author %></td>
+          <td>
+            <%= link_to 'Show', static_page, :class => "btn btn-default btn-sm" %>
+            <%= link_to 'Edit', edit_static_page_path(static_page), :class => "btn btn-default btn-sm"  %>
+            <%= link_to 'Destroy', static_page, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-default btn-danger btn-sm"  %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Static page', new_static_page_path %>
+  <br>
+
+  <%= link_to 'New Static page', new_static_page_path, :class => "btn btn-default btn-sm" %>
+</div>
