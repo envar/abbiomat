@@ -30,7 +30,9 @@
     <% end %>
   </div>
   <div class="form-group">
-    <button class="add_field_button">Add More Fields</button>
+    <%= f.label :images %>
+    <%= file_field_tag "images[]", type: :file, multiple: true %>
+    <button class="btn btn-default add_img_button">Add More Fields</button>
   </div>
-  <%= f.submit "Create Post", class: "btn btn-default" %>
+  <%= f.submit "Create Post", class: "btn btn-primary btn-sm" %>
 <% end %>

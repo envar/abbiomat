@@ -59,6 +59,18 @@ body {
   min-width: 100%;
   height: 500px;
 }
+.carousel-control .fa-chevron-left {
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    display: inline-block;
+}
+.carousel-control .fa-chevron-right {
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    display: inline-block;
+}
 
 
 /* MARKETING CONTENT

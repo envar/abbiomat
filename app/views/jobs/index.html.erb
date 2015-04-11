@@ -1,32 +1,40 @@
 <div class="container content">
   <p id="notice"><%= notice %></p>
 
-  <div class="blog-header">
-    <h1 class="blog-title">Abbiomat Jobs</h1>
-    <p class="lead blog-description">Description about jobs</p>
-  </div>
-
-  <%= will_paginate @jobs %>
-
   <div class="row">
     <div class="col-sm-8 blog-main">
-      <% @jobs.each do |job| %>
-        <div class="blog-post">
-          <h2 class="blog-post-title"><%= link_to job.title, job %></h2>
-          <p class="blog-post-meta"><%= job.created_at.strftime("%B %d, %Y") %></p>
-          <%= truncate(job.body) %>
-          <% if user_signed_in? and current_user.admin %>
-            <div>
-              <%= link_to 'Edit', edit_job_path(job) %>
-              <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <div class="blog-header">
+        <h1 class="blog-title">Abbiomat Jobs</h1>
+        <p class="lead blog-description">Description about jobs</p>
+      </div>
+
+      <%= will_paginate @jobs %>
+
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+          <% @jobs.each do |job| %>
+            <div class="blog-post">
+              <h2 class="blog-post-title"><%= link_to job.title, job %></h2>
+              <p class="blog-post-meta">
+              <%= job.created_at.strftime("%B %d, %Y") %>
+              <% if user_signed_in? and current_user.admin %>
+                <%= link_to edit_job_path(job) do %>
+                  <i class="fa fa-pencil-square-o"></i>
+                <% end %>
+                <%= link_to job, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  <i class="fa fa-trash"></i>
+                <% end %>
+              <% end %>
+              </p>
+              <p><%= truncate(job.body) %></p>
             </div>
           <% end %>
         </div>
+      </div>
+
+      <% if user_signed_in? and current_user.admin %>
+        <%= link_to 'New Job', new_job_path, class: "btn btn-primary btn-sm" %>
       <% end %>
     </div>
   </div>
-
-  <% if user_signed_in? and current_user.admin %>
-    <%= link_to 'New Job', new_job_path, class: "btn btn-default btn-sm" %>
-  <% end %>
 </div>

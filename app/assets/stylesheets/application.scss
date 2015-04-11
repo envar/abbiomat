@@ -10,10 +10,10 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_self
  *= require font-awesome
- *= require custom_bootstrap/custom_bootstrap
- *= require_tree .
+ *= require custom_bootstrap/bootstrap
+ *= require_self
+ *= require_directory .
  */
 
 #remember_me {
@@ -21,7 +21,7 @@
 }
 
 .content {
-    margin-top: 80px;
+    margin-top: 60px;
 }
 
 html {
@@ -29,8 +29,28 @@ html {
     min-height: 100%;
 }
 
+body {
+    margin-bottom: 100px;
+    padding: 5px;
+}
+
+form {
+    margin-bottom: 10px;
+}
+
+.navbar .nav>li>a {
+    padding: 18px 10px 18px 10px;
+}
+
 .dropdown-menu {
     width: 100%;
+}
+
+.avatar {
+    text-align: center;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .footer {
@@ -40,11 +60,12 @@ html {
     width: 100%;
     /* Set the fixed height of the footer here */
     height: 100px;
-    background-color: #93bf9e;
+    background-color: #55863C;
     h3 {
         float: left;
         margin: 0px;
         padding-top: 15px;
+        color: #333333;
     }
 
     ul {
