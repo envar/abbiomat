@@ -6,17 +6,38 @@
         <%= link_to @post.title, @post %>
       </h2>
       <p class="blog-post-meta">
-        <%= @post.created_at.strftime("%B %d, %Y") %>
-        <% if user_signed_in? and current_user.admin %>
-          <%= link_to edit_post_path(@post) do %>
-            <i class="fa fa-pencil-square-o"></i>
-          <% end %>
-          <%= link_to @post, method: :delete, data: { confirm: 'Are you sure?' } do %>
-            <i class="fa fa-trash"></i>
-          <% end %>
-        <% end %>
+      <%= @post.created_at.strftime("%B %d, %Y") %>
+      <% if user_signed_in? and current_user.admin %>
+        <%= link_to edit_post_path(@post) do %>
+        <i class="fa fa-pencil-square-o"></i>
+    <% end %>
+      <%= link_to @post, method: :delete, data: { confirm: 'Are you sure?' } do %>
+        <i class="fa fa-trash"></i>
+    <% end %>
+    <% end %>
       </p>
       <%= markdown(@post.body) %>
     </div>
   </div>
+
+  <div class="row">
+    <% @post.post_images.each do |i| %>
+      <div class="col-lg-3 col-sm-4 col-xs-6">
+        <a data-toggle="modal" data-target="#modal<%= i.id %>"><%= image_tag( i.image.url, class: "thumbnail img-responsive") %></a>
+      </div>
+    <% end %>
+  </div>
+
+  <% @post.post_images.each do |i| %>
+    <div id="modal<%= i.id %>" class="modal"  tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog" style="width: <%= i.dimensions[0]+30 %>px">
+        <div class='modal-content'>
+          <div class="modal-body">
+            <%= image_tag i.image.url, align: "middle" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
 </div>

@@ -1,8 +1,13 @@
 <div class="container content">
-  <h1>Editing Static Page</h1>
+  <p id="notice"><%= notice %></p>
+  <div class="row">
+    <div class="col-sm-8 blog-main">
+      <h1>Editing Static Page</h1>
 
-  <%= render 'form' %>
+      <%= render 'form' %>
 
-  <%= link_to 'Show', @static_page %> |
-  <%= link_to 'Back', static_pages_path %>
+      <%= link_to 'Show', @static_page %> |
+      <%= link_to 'Back', static_pages_path %>
+    </div>
+  </div>
 </div>

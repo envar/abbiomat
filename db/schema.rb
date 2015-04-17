@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150406000410) do
+ActiveRecord::Schema.define(version: 20150417192706) do
 
   create_table "images", force: :cascade do |t|
     t.string   "name"
@@ -27,21 +27,51 @@ ActiveRecord::Schema.define(version: 20150406000410) do
 
   add_index "images", ["imageable_id"], name: "index_images_on_imageable_id"
 
+  create_table "job_images", force: :cascade do |t|
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
   create_table "jobs", force: :cascade do |t|
     t.string   "title"
     t.string   "body"
     t.string   "author"
     t.date     "closing_date"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "job_image_file_name"
+    t.string   "job_image_content_type"
+    t.integer  "job_image_file_size"
+    t.datetime "job_image_updated_at"
   end
+
+  create_table "post_images", force: :cascade do |t|
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "post_id"
+    t.string   "dimensions"
+  end
+
+  add_index "post_images", ["post_id"], name: "index_post_images_on_post_id"
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.string   "body"
     t.string   "author"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "post_image_file_name"
+    t.string   "post_image_content_type"
+    t.integer  "post_image_file_size"
+    t.datetime "post_image_updated_at"
   end
 
   create_table "static_pages", force: :cascade do |t|

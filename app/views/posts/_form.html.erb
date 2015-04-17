@@ -15,24 +15,29 @@
     <%= f.label :title %><br>
     <%= f.text_field :title, class: "form-control" %>
   </div>
+
   <div class="form-group">
     <%= f.label :body %><br>
     <%= f.text_area :body, rows: "20", class: 'form-control' %>
   </div>
+
   <div class="form-group">
     <%= f.label :author %><br>
     <%= f.text_field :author, class: "form-control" %>
   </div>
-  <div class="form-group input_fields_wrap">
-    <%= f.fields_for :images do |g| %>
-      <%= g.label :image, "Image" %><br>
-      <%= g.file_field :image %>
-    <% end %>
-  </div>
+
   <div class="form-group">
     <%= f.label :images %>
-    <%= file_field_tag "images[]", type: :file, multiple: true %>
-    <button class="btn btn-default add_img_button">Add More Fields</button>
+    <div class="form-group input_fields_wrap">
+      <!-- starts off with none -->
+    </div>
   </div>
-  <%= f.submit "Create Post", class: "btn btn-primary btn-sm" %>
+
+  <div class="form-group">
+    <%= button_tag "Add Image", type: :button, class: "btn btn-default add_img_button" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit class: "btn btn-primary btn-sm" %>
+  </div>
 <% end %>

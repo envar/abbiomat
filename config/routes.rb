@@ -2,15 +2,12 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
-  resources :jobs
-  resources :posts
-  resources :images
-
-  # match '/' => 'static_pages#show', :via => [:get], :defaults => { :id => '1' }, as: 'root'
-  match '/about' => 'static_pages#show', :via => [:get], :defaults => { :id => '2' }
-  match '/resources' => 'static_pages#show', :via => [:get], :defaults => { :id => '3' }
+  match '/about' => 'static_pages#show', :via => [:get], :defaults => { :id => '1' }
+  match '/resources' => 'static_pages#show', :via => [:get], :defaults => { :id => '2' }
   # match '/jobs' => 'static_pages#show', :via => [:get], :defaults => { :id => '4' }
   resources :static_pages
+  resources :jobs
+  resources :posts
 
   devise_for :users, :controllers => { :registrations => "my_registrations" }
   get 'user_mailer/send_new_user_message'
