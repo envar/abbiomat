@@ -73,3 +73,5 @@ group :production do
   gem 'rails_12factor'
 end
 
+# Specify ruby version for heroku
+ruby "2.2.0"
