@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150417192706) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "images", force: :cascade do |t|
     t.string   "name"
     t.integer  "imageable_id"
@@ -25,7 +28,7 @@ ActiveRecord::Schema.define(version: 20150417192706) do
     t.datetime "image_updated_at"
   end
 
-  add_index "images", ["imageable_id"], name: "index_images_on_imageable_id"
+  add_index "images", ["imageable_id"], name: "index_images_on_imageable_id", using: :btree
 
   create_table "job_images", force: :cascade do |t|
     t.datetime "created_at",         null: false
@@ -60,7 +63,7 @@ ActiveRecord::Schema.define(version: 20150417192706) do
     t.string   "dimensions"
   end
 
-  add_index "post_images", ["post_id"], name: "index_post_images_on_post_id"
+  add_index "post_images", ["post_id"], name: "index_post_images_on_post_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
@@ -105,7 +108,7 @@ ActiveRecord::Schema.define(version: 20150417192706) do
     t.string   "last_name"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
