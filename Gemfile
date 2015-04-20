@@ -49,7 +49,11 @@ gem 'kramdown'
 # Font Awesome
 gem 'font-awesome-rails'
 
+# Pagination
 gem 'will_paginate', '~> 3.0.6'
+
+# Allows sending an email straight from a form
+gem 'mail_form'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

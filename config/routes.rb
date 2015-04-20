@@ -4,13 +4,15 @@ Rails.application.routes.draw do
 
   match '/about' => 'static_pages#show', :via => [:get], :defaults => { :id => '1' }
   match '/resources' => 'static_pages#show', :via => [:get], :defaults => { :id => '2' }
-  # match '/jobs' => 'static_pages#show', :via => [:get], :defaults => { :id => '4' }
   resources :static_pages
   resources :jobs
   resources :posts
 
   devise_for :users, :controllers => { :registrations => "my_registrations" }
   get 'user_mailer/send_new_user_message'
+
+  # match '/contacts', to: 'contacts#new', via: 'get'
+  resources "contacts", only: [:new, :create]
 
   namespace :admin do
     resources :users do
