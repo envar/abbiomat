@@ -1,20 +1,18 @@
-<div class="container content">
-  <p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p>
 
-  <%= @job.title %>
-  <p>
-    <strong>Closing date:</strong>
-    <%= @job.closing_date %>
-  </p>
-  <p>
-    <strong>Posted:</strong>
-    <%= @job.created_at %>
-  </p>
+<%= @job.title %>
+<p>
+  <strong>Closing date:</strong>
+  <%= @job.closing_date %>
+</p>
+<p>
+  <strong>Posted:</strong>
+  <%= @job.created_at %>
+</p>
 
-  <%= markdown(@job.body) %>
+<%= markdown(@job.body) %>
 
-  <% if user_signed_in? and current_user.admin %>
-    <%= link_to 'Edit', edit_job_path(@job) %> |
-    <%= link_to 'Back', jobs_path %>
-  <% end %>
-</div>
+<% if user_signed_in? and current_user.admin %>
+  <%= link_to 'Edit', edit_job_path(@job) %> |
+  <%= link_to 'Back', jobs_path %>
+<% end %>

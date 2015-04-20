@@ -8,7 +8,11 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
-    <%= yield %>
+    <div class="container content">
+      <%= render 'layouts/messages' %>
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+    </div>
     <%= render 'layouts/footer' %>
   </body>
 </html>

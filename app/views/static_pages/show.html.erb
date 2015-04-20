@@ -1,21 +1,19 @@
-<div class="container content">
-  <p id="notice"><%= notice %></p>
-  <div class="row">
-    <div class="col-sm-8 blog-main">
-      <h1>
-        <%= @static_page.title %>
-        <small>
-          <% if user_signed_in? and current_user.admin %>
-            <%= link_to edit_static_page_path(@static_page) do %>
-              <i class="fa fa-pencil-square-o"></i>
-            <% end %>
-            <%= link_to @static_page, method: :delete, data: { confirm: 'Are you sure?' } do %>
-              <i class="fa fa-trash"></i>
-            <% end %>
+<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-sm-8 blog-main">
+    <h1>
+      <%= @static_page.title %>
+      <small>
+        <% if user_signed_in? and current_user.admin %>
+          <%= link_to edit_static_page_path(@static_page) do %>
+            <i class="fa fa-pencil-square-o"></i>
           <% end %>
-        </small>
-      </h1>
-      <%= markdown(@static_page.body) %>
-    </div>
+          <%= link_to @static_page, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="fa fa-trash"></i>
+          <% end %>
+        <% end %>
+      </small>
+    </h1>
+    <%= markdown(@static_page.body) %>
   </div>
 </div>
