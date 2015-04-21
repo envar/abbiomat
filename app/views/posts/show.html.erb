@@ -3,18 +3,18 @@
   <div class="blog-post">
     <h2 class="blog-post-title">
       <%= link_to @post.title, @post %>
+      <small>
+        <% if user_signed_in? and current_user.admin %>
+          <%= link_to edit_post_path(@post) do %>
+            <i class="fa fa-pencil-square-o"></i>
+          <% end %>
+          <%= link_to @post, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="fa fa-trash"></i>
+          <% end %>
+        <% end %>
+      </small>
     </h2>
-    <p class="blog-post-meta">
-    <%= @post.created_at.strftime("%B %d, %Y") %>
-    <% if user_signed_in? and current_user.admin %>
-      <%= link_to edit_post_path(@post) do %>
-      <i class="fa fa-pencil-square-o"></i>
-  <% end %>
-    <%= link_to @post, method: :delete, data: { confirm: 'Are you sure?' } do %>
-      <i class="fa fa-trash"></i>
-  <% end %>
-  <% end %>
-    </p>
+    <p class="blog-post-meta"><%= @post.created_at.strftime("%B %d, %Y") %></p>
     <%= markdown(@post.body) %>
   </div>
 </div>

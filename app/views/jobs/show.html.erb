@@ -1,18 +1,22 @@
 <p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="blog-post">
+    <h2 class="blog-post-title">
+      <%= link_to @job.title, @job %>
+      <small>
+        <% if user_signed_in? and current_user.admin %>
+          <%= link_to edit_job_path(@job) do %>
+            <i class="fa fa-pencil-square-o"></i>
+          <% end %>
+          <%= link_to @job, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="fa fa-trash"></i>
+          <% end %>
+        <% end %>
+      </small>
+    </h2>
+    <p class="blog-post-meta"><strong>Created at:</strong> <%= @job.created_at.strftime("%B %d, %Y") %></p>
+    <p class="blog-post-meta"><strong>Closing date:</strong> <%= @job.closing_date.strftime("%B %d, %Y") %></p>
+    <%= markdown(@job.body) %>
+  </div>
+</div>
 
-<%= @job.title %>
-<p>
-  <strong>Closing date:</strong>
-  <%= @job.closing_date %>
-</p>
-<p>
-  <strong>Posted:</strong>
-  <%= @job.created_at %>
-</p>
-
-<%= markdown(@job.body) %>
-
-<% if user_signed_in? and current_user.admin %>
-  <%= link_to 'Edit', edit_job_path(@job) %> |
-  <%= link_to 'Back', jobs_path %>
-<% end %>

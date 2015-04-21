@@ -6,7 +6,7 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
-    @jobs = Job.order('created_at DESC').page(params[:page]).per_page(5)
+    @jobs = Job.where("closing_date >= :today", {today: DateTime.now}).order('created_at DESC').page(params[:page]).per_page(5)
   end
 
   # GET /jobs/1
@@ -26,6 +26,8 @@ class JobsController < ApplicationController
   # POST /jobs
   # POST /jobs.json
   def create
+    puts job_params
+    #puts Date.parse(job_params[:closing_date][:year].to_i, job_params[:closing_date][:month].to_i, job_params[:closing_date][:day].to_i)
     @job = Job.new(job_params)
 
     respond_to do |format|

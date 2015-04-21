@@ -15,22 +15,21 @@
     <%= f.label :title %><br>
     <%= f.text_field :title, class: "form-control" %>
   </div>
+
+  <div class="form-group">
+    <%= f.label :closing_date %><br>
+    <%= date_select("job", "closing_date", {start_year: Date.today.year, prompt: { day: 'day', month: 'month', year: 'year' }}, {class: "btn btn-default"}) %>
+  </div>
+
   <div class="form-group">
     <%= f.label :body %><br>
     <%= f.text_area :body, rows: "20", class: 'form-control' %>
   </div>
+
   <div class="form-group">
     <%= f.label :author %><br>
     <%= f.text_field :author, class: "form-control" %>
   </div>
-  <div class="form-group input_fields_wrap">
-    <%= f.fields_for :images do |g| %>
-      <%= g.label :image, "Image" %><br>
-      <%= g.file_field :image %>
-    <% end %>
-  </div>
-  <div class="form-group">
-    <button class="add_field_button">Add More Fields</button>
-  </div>
+
   <%= f.submit "Create Job", class: "btn btn-primary btn-sm" %>
 <% end %>
