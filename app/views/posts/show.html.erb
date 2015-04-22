@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 <div class="row">
   <div class="blog-post">
     <h2 class="blog-post-title">
@@ -20,21 +19,47 @@
 </div>
 
 <div class="row">
-  <% @post.post_images.each do |i| %>
-    <div class="col-lg-3 col-sm-4 col-xs-6">
-      <a data-toggle="modal" data-target="#modal<%= i.id %>"><%= image_tag( i.image.url, class: "thumbnail img-responsive") %></a>
-    </div>
-  <% end %>
-</div>
-
-<% @post.post_images.each do |i| %>
-  <div id="modal<%= i.id %>" class="modal"  tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" style="width: <%= i.dimensions[0]+30 %>px">
-      <div class='modal-content'>
-        <div class="modal-body">
-          <%= image_tag i.image.url, align: "middle" %>
+  <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+  <div id="blueimp-gallery" class="blueimp-gallery">
+    <!-- The container for the modal slides -->
+    <div class="slides"></div>
+    <!-- Controls for the borderless lightbox -->
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+    <!-- The modal dialog, which will be used to wrap the lightbox content -->
+    <div class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" aria-hidden="true">&times;</button>
+            <h4 class="modal-title"></h4>
+          </div>
+          <div class="modal-body next"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default pull-left prev">
+              <i class="glyphicon glyphicon-chevron-left"></i>
+              Previous
+            </button>
+            <button type="button" class="btn btn-primary next">
+              Next
+              <i class="glyphicon glyphicon-chevron-right"></i>
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-<% end %>
+
+  <div id="links">
+    <% @post.post_images.each do |i| %>
+      <a href="<%= i.image.url %>" data-gallery>
+        <%= image_tag i.image.url(:thumb) %>
+      </a>
+    <% end %>
+  </div>
+</div>
+
