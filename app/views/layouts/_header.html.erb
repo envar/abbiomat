@@ -16,7 +16,7 @@
           <li class="<%= 'active' if current_page?('/') %>"><%= link_to "Home", root_path %></li>
           <li class="<%= 'active' if current_page?('/about') %>"><%= link_to "About", about_path %></li>
           <li class="<%= 'active' if current_page?(posts_path) %>"><%= link_to "News", posts_path %></li>
-          <li class="<%= 'active' if current_page?(jobs_path) %>"><%= link_to "Jobs", jobs_path %></li>
+          <li class="<%= 'active' if current_page?(jobs_path) %>"><%= link_to "Mentorships", jobs_path %></li>
           <li class="<%= 'active' if current_page?('/resources') %>"><%= link_to "Resources", resources_path %></li>
           <li class="<%= 'active' if current_page?(new_contact_path) %>"><%= link_to "Contact", new_contact_path %></li>
           <% if user_signed_in? %>

@@ -22,5 +22,18 @@ module Abbiomat
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Mailer config
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      :address => "smtp.mandrillapp.com",
+      :port => 587,
+      :user_name => ENV['MANDRILL_USERNAME'],
+      :password => ENV['MANDRILL_PASSWORD'],
+      :authentication => "plain",
+      :enable_starttls_auto => true,
+      :domain => "abbiomat.ca"
+    }
+
   end
 end
