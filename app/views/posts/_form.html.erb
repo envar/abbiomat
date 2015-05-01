@@ -22,12 +22,26 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :author %><br>
+    <%= f.label :author %>
     <%= f.text_field :author, class: "form-control" %>
   </div>
 
   <div class="form-group">
     <%= f.label :images %>
+    <p>Flag images for deletion</p>
+    <% if @post.post_images.exists? %>
+      <div class="row">
+        <%= f.fields_for :post_images do |i| %>
+          <div class="col-xs-6 col-md-3 img" style="position: relative">
+            <span class="deleteButton"><%= i.check_box :_destroy %></span>
+            <%= image_tag i.object.image.url, class: "thumbnail", style: "width: 100%" %>
+            <%= i.object.id %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="form-group">
     <div class="form-group input_fields_wrap">
       <!-- starts off with none -->
     </div>

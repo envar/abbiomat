@@ -18,6 +18,7 @@ class PostsController < Admin::AdminController
   # GET /posts/new
   def new
     @post = Post.new
+    @post.post_images.build
   end
 
   # GET /posts/1/edit
@@ -33,9 +34,7 @@ class PostsController < Admin::AdminController
       if @post.save
 
         if params[:images]
-          puts 'saving images'
           params[:images].each { |image|
-            puts image
             @post.post_images.create(image: image)
           }
         end
@@ -81,6 +80,6 @@ class PostsController < Admin::AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :body, :author, :images)
+      params.require(:post).permit(:title, :body, :author, post_images_attributes: [:id, :image, :_destroy])
     end
 end

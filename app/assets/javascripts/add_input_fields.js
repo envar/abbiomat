@@ -13,12 +13,14 @@
             return;
         }
 
-        var x = 0; //initial text box count
+        var x = $(".img").length;
+        max_fields = x + 10;
+        //var x = 0; //initial image count
         add_button.click(function(e){ //on add input button click
             e.preventDefault();
             if(x < max_fields){ //max input box allowed
                 //wrapper.append('<div><input type="file" name="images['+x+']" id="images_"><a href="#" class="remove_field">Remove</a></div>'); //add input box
-                wrapper.append('<div><input type="file" name="images[]" id="images_"><a href="#" class="remove_field">Remove</a></div>'); //add input box
+                wrapper.append('<div><input type="file" name="post[post_images_attributes]['+x+'][image]" id="post_post_images_attributes_'+x+'_image"><a href="#" class="remove_field">Remove</a></div>'); //add input box
                 x++; //text box increment
             }
         });

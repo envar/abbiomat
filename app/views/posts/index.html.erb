@@ -1,7 +1,5 @@
-<p id="notice"><%= notice %></p>
-
 <div class="row">
-  <div class="col-sm-8 blog-main">
+  <div class="col-lg-8 col-md-10">
     <div class="blog-header">
       <h1 class="blog-title">News</h1>
       <!-- <p class="lead blog-description">Some kind of description about the blog</p> -->
@@ -31,7 +29,7 @@
 </div>
 
 <div class="row">
-  <div class="col-sm-8 blog-main">
+  <div class="col-lg-8 col-md-10">
     <% if user_signed_in? and current_user.admin %>
       <%= link_to 'New Post', new_post_path, :class => "btn btn-primary btn-sm" %>
     <% end %>

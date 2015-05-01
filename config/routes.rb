@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   match '/resources' => 'static_pages#show', :via => [:get], :defaults => { :id => '2' }
   resources :static_pages
   resources :jobs
-  resources :posts
+  resources :posts do
+    resources :post_images
+  end
 
   devise_for :users, :controllers => { :registrations => "my_registrations" }
   get 'user_mailer/send_new_user_message'
