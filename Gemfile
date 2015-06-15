@@ -74,4 +74,4 @@ group :production do
 end
 
 # Specify ruby version for heroku
-ruby "2.2.0"
+ruby "2.2.2"
