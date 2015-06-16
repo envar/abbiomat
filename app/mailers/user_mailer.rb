@@ -1,7 +1,7 @@
 class UserMailer < ActionMailer::Base
   def send_new_user_mail(user)
     @user = user
-    mail( from: 'test@abbiomat.ca', to: 'nicpon.michal@gmail.com', subject: "New user created" )
+    mail( from: 'admin@abbiomat.ca', to: 'bioasc@ualberta.ca', subject: "New user created" )
   end
 
   def welcome_mail(user)

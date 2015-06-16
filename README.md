@@ -5,9 +5,9 @@ Some accounts require a credit card to set up. However, usually they are free if
 - Heroku - web hosting
 - Amazon S3 - file hosting
 - Mandrill - send transactional emails
-- Gmail - recaptcha
 - Namecheap - domain registrar
 - Cloudflare - CDN and DNS provider
+- Google ReCaptcha - spam and bot prevention
 
 ## Source Code
 All source code was written by me, Michal Nicpon. The project has revision control using Git. Changes are pushed up to Heroku using the Heroku toolbelt/Git. I have provided a zip file of the project in its entirety. Changes to the site will be done through me until such time as someone else is willing to take ownership. The website was written using Ruby on Rails and the database is PostgreSQL.

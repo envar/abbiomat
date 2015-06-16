@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-lg-8 col-md-10">
     <div class="blog-header">
-      <h1 class="blog-title">News</h1>
+      <h1 class="blog-title">Events</h1>
       <!-- <p class="lead blog-description">Some kind of description about the blog</p> -->
     </div>
 
@@ -12,7 +12,7 @@
           <%= link_to post.title, post %>
         </h2>
         <p class="blog-post-meta">
-        <%= post.created_at.strftime("%B %d, %Y") %>
+        <%= post.post_date.strftime("%B %d, %Y") %>
         <% if user_signed_in? and current_user.admin %>
           <%= link_to edit_post_path(post) do %>
             <i class="fa fa-pencil-square-o"></i>
@@ -22,7 +22,7 @@
           <% end %>
         <% end %>
         </p>
-        <p><%= truncate(post.body) %></p>
+        <p><%= markdown(truncate(post.body, length: 140, :escape => false)) %></p>
       </div>
     <% end %>
   </div>

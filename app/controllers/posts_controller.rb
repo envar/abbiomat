@@ -6,8 +6,11 @@ class PostsController < Admin::AdminController
   # GET /posts
   # GET /posts.json
   def index
-    # @posts = Post.all
-    @posts = Post.order('created_at DESC').page(params[:page]).per_page(5)
+    if user_signed_in? and current_user.admin?
+      @posts = Post.all.order('post_date DESC').page(params[:page]).per_page(10)
+    else
+      @posts = Post.where('post_date > ?', Time.zone.now.beginning_of_day).order('post_date DESC').page(params[:page]).per_page(10)
+    end
   end
 
   # GET /posts/1
@@ -80,6 +83,6 @@ class PostsController < Admin::AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :body, :author, post_images_attributes: [:id, :image, :_destroy])
+      params.require(:post).permit(:title, :body, :author, :post_date, post_images_attributes: [:id, :image, :_destroy])
     end
 end
