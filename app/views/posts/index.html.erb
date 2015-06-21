@@ -12,7 +12,6 @@
           <%= link_to post.title, post %>
         </h2>
         <p class="blog-post-meta">
-        <%= post.post_date.strftime("%B %d, %Y") ? post.post_date : "No post date" %>
         <% if user_signed_in? and current_user.admin %>
           <%= link_to edit_post_path(post) do %>
             <i class="fa fa-pencil-square-o"></i>
