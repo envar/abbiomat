@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150615041311) do
+ActiveRecord::Schema.define(version: 20150621174511) do
 
   create_table "images", force: :cascade do |t|
     t.string   "name"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20150615041311) do
     t.integer  "post_image_file_size"
     t.datetime "post_image_updated_at"
     t.datetime "post_date"
+    t.boolean  "visible"
   end
 
   create_table "static_pages", force: :cascade do |t|
